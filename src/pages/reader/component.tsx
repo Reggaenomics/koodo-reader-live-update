@@ -66,6 +66,7 @@ const PANEL_OPEN_STATE: Record<
 class Reader extends React.Component<ReaderProps, ReaderState> {
   messageTimer!: NodeJS.Timeout;
   tickTimer!: NodeJS.Timeout;
+  _lastDiscordPercent: number = -1;
   private readingTimeUtil = new ReadingTimeUtil(
     ConfigService,
     isElectron
@@ -308,12 +309,20 @@ class Reader extends React.Component<ReaderProps, ReaderState> {
   };
   handleLocation = () => {
     let position = this.props.htmlBook.rendition.getPosition();
-
     ConfigService.setObjectConfig(
       this.props.currentBook.key,
       position,
       "recordLocation"
     );
+    if (isElectron && this.props.currentBook) {
+      const newPercent = Math.floor(
+        parseFloat(position.percentage || "0") * 100
+      );
+      if (newPercent !== this._lastDiscordPercent) {
+        this._lastDiscordPercent = newPercent;
+        updateDiscordPresence(this.props.currentBook);
+      }
+    }
   };
   render() {
     const renditionProps = {

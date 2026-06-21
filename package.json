@@ -1,17 +1,17 @@
 {
-  "name": "koodo-reader",
+  "name": "koodo-reader-live-update",
   "main": "main.js",
-  "version": "2.3.8",
-  "description": "Koodo Reader is a cross-platform ebook reader",
+  "version": "2.3.8-live.1",
+  "description": "Unofficial fork of Koodo for the Discord Rich Presence live updating functionality",
   "author": {
-    "name": "App by Troye",
-    "email": "feedback@koodoreader.com"
+    "name": "Original App by Troye; Fork by Ragu",
+    "email": "noreply@example.com"
   },
   "engines": {
     "node": ">=20.0.0",
     "npm": ">=6.0.0"
   },
-  "repository": "https://github.com/koodo-reader/koodo-reader",
+  "repository": "https://github.com/Reggaenomics/koodo-reader-live-update",
   "private": false,
   "resolutions": {
     "@types/react": "^18.3.1",
@@ -23,7 +23,7 @@
     "adm-zip": "^0.5.2",
     "axios": "0.31.1",
     "basic-ftp": "5.3.1",
-    "better-sqlite3": "^11.6.0",
+    "better-sqlite3": "^12.11.1",
     "buffer": "^6.0.3",
     "chardet": "^2.0.0",
     "color-thief-browser": "^2.0.2",
@@ -116,9 +116,9 @@
   },
   "homepage": "./",
   "build": {
-    "appId": "xyz.960960.koodo",
-    "productName": "Koodo Reader",
-    "copyright": "Copyright (c) 2020-2025 ${author}",
+    "appId": "KoodoReaderLive",
+    "productName": "Koodo Reader Live",
+    "copyright": "Copyright (c) 2020-2026 App by Troye; fork by Ragu",
     "files": [
       "build/**/*",
       "node_modules/**/*",
@@ -127,9 +127,9 @@
       "main.js"
     ],
     "protocols": {
-      "name": "KoodoReader",
+      "name": "KoodoReaderLive",
       "schemes": [
-        "koodo-reader"
+        "koodo-reader-live"
       ]
     },
     "directories": {
@@ -137,8 +137,8 @@
     },
     "publish": {
       "provider": "github",
-      "repo": "koodo-reader",
-      "owner": "koodo-reader"
+      "repo": "koodo-reader-live-update",
+      "owner": "Reggaenomics"
     },
     "buildDependenciesFromSource": false,
     "nodeGypRebuild": false,
@@ -246,9 +246,7 @@
         {
           "target": "nsis",
           "arch": [
-            "x64",
-            "ia32",
-            "arm64"
+            "x64"
           ]
         },
         {
@@ -302,12 +300,12 @@
       "artifactName": "${productName}-${version}-${arch}-Portable.${ext}"
     },
     "appx": {
-      "applicationId": "com.koodoreader.electron",
-      "identityName": "AppbyTroye.KoodoReader",
-      "publisher": "CN=0AEAD7C6-DF4A-4D05-8FA0-D816D7DE37FF",
-      "publisherDisplayName": "App by Troye",
+      "applicationId": "com.reggaenomics.koodoreaderlive",
+      "identityName": "Reggaenomics.KoodoReaderLive",
+      "publisher": "CN=Reggaenomics",
+      "publisherDisplayName": "Reggaenomics",
       "artifactName": "${productName}-${version}-${arch}.${ext}",
-      "displayName": "Koodo Reader",
+      "displayName": "Koodo Reader Live",
       "backgroundColor": "transparent"
     },
     "nsis": {
