@@ -36,6 +36,7 @@ class UpdateInfo extends React.Component<UpdateInfoProps, UpdateInfoState> {
     };
   }
   async componentDidMount() {
+    return;
     if (!this.props.currentBook.key) {
       if (!isElectron) {
         return;
