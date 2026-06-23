@@ -30,6 +30,7 @@ import { ocrTesseractLangList } from "../../constants/dropdownList";
 import DatabaseService from "../../utils/storage/databaseService";
 import { getOcrResult } from "../../utils/request/reader";
 import { BookHelper } from "../../assets/lib/kookit.min";
+import { updateDiscordPresence } from "../../utils/reader/discordRPC";
 declare var window: any;
 let lock = false; //prevent from clicking too fasts
 
@@ -351,7 +352,13 @@ class Viewer extends React.Component<ViewerProps, ViewerState> {
       this.props.currentBook.format,
       this.props.handleScale,
       this.props.renderBookFunc,
-      () => this.props.handleFetchPercentage(this.props.currentBook)
+      () => {
+        // Keep redux progress state in sync (progress panel display)
+        this.props.handleFetchPercentage(this.props.currentBook);
+        // Update Discord Rich Presence with the new percentage, the same
+        // way the dedicated page-turn buttons do via Reader.handleLocation
+        updateDiscordPresence(this.props.currentBook);
+      }
     );
     let chapters = rendition.getChapter();
     let chapterDocs = rendition.getChapterDoc();
