@@ -1,7 +1,7 @@
 {
   "name": "koodo-reader-live-update",
   "main": "main.js",
-  "version": "2.3.8-live.1",
+  "version": "2.3.8-live.2",
   "description": "Unofficial fork of Koodo for the Discord Rich Presence live updating functionality",
   "author": {
     "name": "Original App by Troye; Fork by Ragu",

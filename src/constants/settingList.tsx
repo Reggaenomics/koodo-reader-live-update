@@ -121,6 +121,12 @@ export const dataSettingList = [
     propName: "isEnableDiscordRPC",
   },
   {
+    isElectron: true,
+    title: "Enable Discord Rich Presence",
+    desc: "Show your reading status and the book your're reading on your Discord profile. Discord needs to be running on your computer",
+    propName: "isEnableLiveUpdate",
+  },
+  {
     isElectron: false,
     title: "Auto sync reading progress with KOReader",
     desc: "Clicking the sync button will sync reading progress between Koodo Reader and KOReader with KOReader sync server.",

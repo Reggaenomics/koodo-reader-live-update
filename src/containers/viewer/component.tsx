@@ -350,7 +350,8 @@ class Viewer extends React.Component<ViewerProps, ViewerState> {
       this.props.readerMode,
       this.props.currentBook.format,
       this.props.handleScale,
-      this.props.renderBookFunc
+      this.props.renderBookFunc,
+      () => this.props.handleFetchPercentage(this.props.currentBook)
     );
     let chapters = rendition.getChapter();
     let chapterDocs = rendition.getChapterDoc();

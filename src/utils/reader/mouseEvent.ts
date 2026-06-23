@@ -235,7 +235,8 @@ export const bindHtmlEvent = (
   key: string = "",
   readerMode: string = "",
   handleScale: (scale: string) => void,
-  renderBookFunc: () => void
+  renderBookFunc: () => void,
+  handlePageChange?: () => void
 ) => {
   doc.addEventListener(
     "keydown",
@@ -244,6 +245,7 @@ export const bindHtmlEvent = (
       lock = true;
       await arrowKeys(rendition, event.keyCode, event, readerMode);
       handleLocation(key, rendition);
+      handlePageChange?.();
       setTimeout(() => (lock = false), throttleTime);
     },
     { passive: false }
@@ -299,6 +301,7 @@ export const bindHtmlEvent = (
       lock = true;
       await arrowKeys(rendition, event.keyCode, event, readerMode);
       handleLocation(key, rendition);
+      handlePageChange?.();
       setTimeout(() => (lock = false), throttleTime);
     },
     { passive: false }
@@ -339,7 +342,8 @@ export const htmlMouseEvent = (
   readerMode: string,
   format: string,
   handleScale: (scale: string) => void,
-  renderBookFunc: () => void
+  renderBookFunc: () => void,
+  handlePageChange?: () => void
 ) => {
   rendition.on("rendered", () => {
     let iframe = getIframeWin();
@@ -355,7 +359,8 @@ export const htmlMouseEvent = (
         key,
         readerMode,
         handleScale,
-        renderBookFunc
+        renderBookFunc,
+        handlePageChange
       );
     }
     lock = false;
